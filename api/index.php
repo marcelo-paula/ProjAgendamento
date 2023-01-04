@@ -20,22 +20,22 @@ switch ($url) {
 
     //Requisição para editar um usuário
     case '/ProjAgendamento/api/user/update':
-        echo 'Requisição para editar um usuário';
+        $user->update();
     break;
 
     //Requisição para deletar um usuário
     case '/ProjAgendamento/api/user/delete':
-        echo 'Requisição para deletar um usuário';
+        $user->delete();
     break;
 
     //Requisição para listar todos os usuários
     case '/ProjAgendamento/api/usuario/getall':
-        echo 'Requisição para listar todos os usuários';
+        $user->getAll();
     break;
 
     //Requisição para listar um usuário
     case '/ProjAgendamento/api/usuario/getbyid':
-        echo 'Requisição para listar um usuário';
+        $user->getById();
     break;
     //=========================================
     

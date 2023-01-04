@@ -8,6 +8,7 @@ class userController{
     private $email;
     private $password;
 
+    //Construtor da classe userController que instancia a classe userModel e a classe view e recebe os dados do usuário
     public function __construct(){
         $this->userModel = new userModel();
         $this->view = new view();
@@ -17,6 +18,7 @@ class userController{
         $this->password = empty($_POST['password']) ? null : $_POST['password'];
     }
 
+    //Função para inserir um usuário
     public function create(){
         if (empty($this->name) || empty($this->email) || empty($this->password)) {
             $this->view->api(null, 'Preencha todos os campos', 400);
@@ -26,14 +28,15 @@ class userController{
             $idNovoUser = $this->userModel->create($this->name, $this->email, $this->password);
 
             if ($idNovoUser != false) {
-                $novoUser = $this->userModel->getById($idNovoUser);
-                $this->view->api($novoUser,'Usuário cadastrado com sucesso', 200);
+                $newUser = $this->userModel->getById($idNovoUser);
+                $this->view->api($newUser,'Usuário cadastrado com sucesso', 200);
             } else {
                 $this->view->api(null, 'Erro ao cadastrar usuário', 400);
             }
         }
     }
 
+    //Função para atualizar os dados do usuário
     public function update(){
         if (empty($this->name) || empty($this->email) || empty($this->password)) {
             $this->view->api(null, 'Preencha todos os campos', 400);
@@ -51,15 +54,38 @@ class userController{
         }
     }
 
+    //Função para deletar um usuário
     public function delete(){
+        $idUser = $_GET['id'];
+        $delete = $this->userModel->delete($idUser);
 
+        if ($delete > 0) {
+            $this->view->api(null, 'Usuário deletado com sucesso', 200);
+        } else {
+            $this->view->api(null, 'Erro ao deletar usuário', 400);
+        }
     }
 
+    //Função para listar todos os usuários cadastrados
     public function getAll(){
+        $getall = $this->userModel->getAll();
 
+        if ($getall != false) {
+            $this->view->api($getall, 'Usuários encontrados', 200);
+        } else {
+            $this->view->api(null, 'Nenhum usuário encontrado', 400);
+        }
     }
 
+    //Função para listar um usuário específico
     public function getById(){
+        $idUser = $_GET['id'];
+        $getById = $this->userModel->getById($idUser);
 
+        if ($getById != false) {
+            $this->view->api($getById, 'Usuário encontrado', 200);
+        } else {
+            $this->view->api(null, 'Usuário não encontrado', 400);
+        }
     }
 }
