@@ -1,0 +1,13 @@
+:root {
+   /* Cores principais */
+    --color-primary: #d19d64;
+    --color-white: #fff;
+    --color-black: #1e1d1d;
+
+    /* Cores bg */
+    --color-bg-header: #333;
+    --color-bg-primary: #fff;
+}
+
+a:focus, a:hover, a:active,
+a {text-decoration: none;}
