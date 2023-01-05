@@ -50,8 +50,7 @@ class userModel extends Conexao{
             $stmt->bindValue(':email', $email);
             $stmt->bindValue(':password', $password);
             $stmt->bindValue(':idUser', $idUser);
-            $stmt->execute();
-            return $stmt->rowCount();
+            return $stmt->execute();
         }
     }
 
@@ -62,8 +61,7 @@ class userModel extends Conexao{
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':idUser', $idUser);
-        $stmt->execute();
-        return $stmt->rowCount();
+        return $stmt->execute();
     }
 
     //Função para buscar um usuários

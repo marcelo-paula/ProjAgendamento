@@ -8,6 +8,8 @@ include 'model/conexao.php';
 include 'controller/userController.php';
 include 'model/userModel.php';
 include 'helper/view.php';
+include 'model/security.php';
+include 'helper/security.php';
 
 $user = new userController();
 
@@ -29,12 +31,12 @@ switch ($url) {
     break;
 
     //Requisição para listar todos os usuários
-    case '/ProjAgendamento/api/usuario/getall':
+    case '/ProjAgendamento/api/user/getall':
         $user->getAll();
     break;
 
     //Requisição para listar um usuário
-    case '/ProjAgendamento/api/usuario/getbyid':
+    case '/ProjAgendamento/api/user/getbyid':
         $user->getById();
     break;
     //=========================================

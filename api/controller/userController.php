@@ -20,7 +20,7 @@ class userController{
 
     //Função para inserir um usuário
     public function create(){
-        if (empty($this->name) || empty($this->email) || empty($this->password)) {
+        if (empty($this->name) and empty($this->email) and empty($this->password)) {
             $this->view->api(null, 'Preencha todos os campos', 400);
             return;
         }else{
@@ -38,6 +38,9 @@ class userController{
 
     //Função para atualizar os dados do usuário
     public function update(){
+        $security = new security();
+        $user = $security->verificy(); 
+        
         if (empty($this->name) || empty($this->email) || empty($this->password)) {
             $this->view->api(null, 'Preencha todos os campos', 400);
             return;
@@ -45,7 +48,7 @@ class userController{
             $idUser = $_GET['id'];
             $update = $this->userModel->update($this->name, $this->email, $this->password, $idUser);
 
-            if ($update > 0) {
+            if ($update) {
                 $user = $this->userModel->getById($idUser);
                 $this->view->api($user, 'Usuário atualizado com sucesso', 200);
             } else {
@@ -56,10 +59,13 @@ class userController{
 
     //Função para deletar um usuário
     public function delete(){
+        $security = new security();
+        $user = $security->verificy();
+
         $idUser = $_GET['id'];
         $delete = $this->userModel->delete($idUser);
 
-        if ($delete > 0) {
+        if ($delete) {
             $this->view->api(null, 'Usuário deletado com sucesso', 200);
         } else {
             $this->view->api(null, 'Erro ao deletar usuário', 400);
@@ -68,6 +74,9 @@ class userController{
 
     //Função para listar todos os usuários cadastrados
     public function getAll(){
+        $security = new security();
+        $user = $security->verificy();
+
         $getall = $this->userModel->getAll();
 
         if ($getall != false) {
@@ -79,6 +88,9 @@ class userController{
 
     //Função para listar um usuário específico
     public function getById(){
+        $security = new security();
+        $user = $security->verificy();
+
         $idUser = $_GET['id'];
         $getById = $this->userModel->getById($idUser);
 
