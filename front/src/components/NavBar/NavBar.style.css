@@ -1,0 +1,8 @@
+.menu {
+    background-color: var(--color-bg-header);
+    padding: 10px 0px;
+}
+
+.menu img {
+    height: 80px;
+}
