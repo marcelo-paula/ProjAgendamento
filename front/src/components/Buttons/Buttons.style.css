@@ -1,0 +1,9 @@
+.buttons{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.buttons .btn.btn-outline-primary{
+    margin: 10px 0px;
+}
