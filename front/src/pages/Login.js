@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar/NavBar"
 function Login(){
 
     function esqueciSenha(){
-        window.prompt("Esqueci minha senha", "Informe seu e-mail");
+        prompt("Informe seu e-mail");
     }
 
     return (

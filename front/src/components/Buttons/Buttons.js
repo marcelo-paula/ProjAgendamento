@@ -7,15 +7,16 @@ const Buttons = ({submit,
                   imgDanger, 
                   danger, 
                   redirectSubmit, 
-                  redirectDanger}) => {
+                  redirectDanger
+                }) => {
     return(
         <>
-            <Link to={redirectSubmit} className="btn btn-outline-primary">
-                {imgSubmit} {submit}
+            <Link to={redirectSubmit} className="btn btn-outline-primary" type='submit'>
+                {imgSubmit} {submit} 
             </Link>
 
             <Link to={redirectDanger} className="btn btn-outline-danger">
-                {imgDanger} {danger}
+                {imgDanger} {danger} 
             </Link>
         </>
     )

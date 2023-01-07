@@ -16,7 +16,7 @@ class tokenModel extends Conexao{
                 VALUES (
                     :token, 
                     :idUser,
-                    NOW() + INTERVAL 5 second)";
+                    NOW() + INTERVAL 5 hours)";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':token', $token);
