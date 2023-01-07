@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Form.style.css';
 import Buttons from '../Buttons/Buttons.js';
 
 
-const Login = () => {
+const RegisterUser = () => {
     return(
         <>
             <form className="formLogin col-12">
                 <div className="container">
                     <div className="row">
+                        <h2>Create acount</h2>
                         <div class="form-floating mb-1">
                             <input type="name" className="form-control" id="name" name="name" placeholder="Inform your name"/>
                             <label for="name">Name</label>
@@ -27,8 +27,12 @@ const Login = () => {
                             <label for="confirPassword">Confirm Password</label>
                         </div>
                         <div className="buttons">
-                            <Buttons submit="Save user"
-                                     clear="Clear fields"
+                            <Buttons redirectSubmit=""
+                                     imgSubmit={<i class="fa-solid fa-floppy-disk"></i>}
+                                     submit="Save user"
+                                     redirectDanger=""
+                                     imgDanger={<i class="fa-solid fa-spinner"></i>}
+                                     danger="Clear fields"
                             />
                         </div>
                     </div>
@@ -38,4 +42,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default RegisterUser
