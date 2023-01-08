@@ -6,18 +6,24 @@ const Buttons = ({submit,
                   imgSubmit, 
                   imgDanger, 
                   danger, 
-                  redirectSubmit, 
-                  redirectDanger
+                  redirectDanger,
+                  visu = true
                 }) => {
     return(
         <>
-            <Link to={redirectSubmit} className="btn btn-outline-primary" type='submit'>
+            <button className="btn btn-outline-primary" type='submit'>
                 {imgSubmit} {submit} 
-            </Link>
+            </button>
 
-            <Link to={redirectDanger} className="btn btn-outline-danger">
-                {imgDanger} {danger} 
-            </Link>
+            {visu === true ? (
+                <Link to={redirectDanger} className="btn btn-outline-danger">
+                    {imgDanger} {danger} 
+                </Link>
+            ): (
+                <button className="btn btn-outline-danger" type='reset' onClick={redirectDanger}>
+                    {imgDanger} {danger} 
+                </button>
+            )}
         </>
     )
 }
